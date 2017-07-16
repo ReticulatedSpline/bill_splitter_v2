@@ -19,13 +19,13 @@ import {Tenant} from './tenant';
 export class AppComponent implements OnInit {
 
   //list of all tenants
-  private tenants : Tenant[];
-  private formArray : FormArray;
-  private count : number;
-  private output : string[];
-  private submitted : boolean;
-  private total : number;
-  private ave : number;
+  public tenants : Tenant[];
+  public formArray : FormArray;
+  public count : number;
+  public output : string[];
+  public submitted : boolean;
+  public total : number;
+  public ave : number;
 
   ngOnInit() {
     this.count = 1;
