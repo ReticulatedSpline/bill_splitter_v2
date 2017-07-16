@@ -124,10 +124,6 @@ export class AppComponent implements OnInit {
     return minTenant;
   }
 
-  toggleState() : void {
-    this.submitted = !this.submitted;
-  }
-
   getMonth() : string {
     var d = new Date();
     var month = new Array();

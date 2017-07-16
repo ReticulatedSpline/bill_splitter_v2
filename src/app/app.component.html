@@ -49,18 +49,21 @@ class="card"
 <md-card
 class = "card"
 *ngIf = "submitted">
-  <md-card-header>
+  <md-card-header
+   id = "cardHeader">
     <md-card-title>For the month of {{getMonth()}}:</md-card-title>
     <md-card-subtitle>Total Utilities: {{total}} | Cost per Tenant: {{ave}}</md-card-subtitle>
   </md-card-header>
   <md-card-content ngFor = "let string of output">
     <ul
     *ngFor = "let string of output"
-    class = "list">
+    class = "list"
+    id = "resultList">
       <li>{{string}}</li>
     </ul>
   </md-card-content>
-  <md-card-actions>
+  <md-card-actions
+   id = "actions">
     <button
     md-raised-button
     (click) = "ngOnInit()">Restart</button>

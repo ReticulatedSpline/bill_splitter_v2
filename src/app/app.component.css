@@ -12,6 +12,21 @@
   margin-bottom: 1em;
 }
 
+#cardHeader {
+  margin-bottom: 2%;
+}
+
+#actions {
+  margin-top: 2%;
+}
+
+#resultList {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-left: 1em;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
 .list li {
   list-style-type: none;
 }
