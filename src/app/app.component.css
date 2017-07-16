@@ -1,3 +1,7 @@
+h3 {
+  font-weight: lighter;
+}
+
 #assembly {
   display: flex;
   margin-top: 5%;
@@ -21,11 +25,14 @@
 }
 
 #resultList {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
   padding-left: 1em;
   padding-top: 4%;
   padding-bottom: 4%;
+}
+
+#resultBorder {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 .list li {
   list-style-type: none;

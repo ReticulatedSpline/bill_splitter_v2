@@ -84,13 +84,15 @@ export class AppComponent implements OnInit {
       //else they pay as much as overpaid tenant overpaid
       else temp = this.getMaxDev().dev;
       this.output.push(this.getMinDev().name + " should pay "
-                  + this.getMaxDev().name + " $" + Math.abs(temp));
+                  + this.getMaxDev().name + " $" + Math.abs(temp).toFixed(2));
 
       this.getMaxDev().paid = this.getMaxDev().paid - Math.abs(temp);
       this.getMinDev().paid = this.getMinDev().paid + Math.abs(temp);
       this.findDevs();
     }
-    console.log(this.output);
+
+    this.ave.toFixed(2);
+    this.total.toFixed(2);
     this.submitted = true;
   }
 
@@ -139,7 +141,8 @@ export class AppComponent implements OnInit {
     month[9] = "October";
     month[10] = "November";
     month[11] = "December";
-    var n = month[d.getMonth()];
+    //TODO: Deal with negative outcomes
+    var n = month[d.getMonth() - 2];
     return n;
   }
 }
