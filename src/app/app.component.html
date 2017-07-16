@@ -15,8 +15,10 @@
   [disabled]="count < 2">-</button>
 </div>
 
-<md-card id="tenantCard">
-  <ul id="tenantList">
+<md-card
+class="card"
+*ngIf = "!submitted">
+  <ul class = "list">
     <li *ngFor="let tenant of tenants">
       <md-input-container
         class = "cardItem">
@@ -43,5 +45,29 @@
       (click) = "submit()">Who pays who?</button>
   </ul>
 </md-card>
+
+<md-card
+class = "card"
+*ngIf = "submitted">
+  <md-card-header>
+    <md-card-title>For the month of {{getMonth()}}:</md-card-title>
+    <md-card-subtitle>Total Utilities: {{total}} | Cost per Tenant: {{ave}}</md-card-subtitle>
+  </md-card-header>
+  <md-card-content ngFor = "let string of output">
+    <ul
+    *ngFor = "let string of output"
+    class = "list">
+      <li>{{string}}</li>
+    </ul>
+  </md-card-content>
+  <md-card-actions>
+    <button
+    md-raised-button
+    (click) = "ngOnInit()">Restart</button>
+    <button
+    md-raised-button>Copy to Clipboard</button>
+    <button
+    md-raised-button>Email</button>
+  </md-card-actions>
+</md-card>
 </span>
-<h3>Output: {{output}}</h3>

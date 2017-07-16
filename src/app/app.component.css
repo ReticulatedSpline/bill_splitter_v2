@@ -3,11 +3,6 @@
   margin-top: 5%;
 }
 
-#tenantCard {
-  display: inline-block;
-  margin-right: auto;
-}
-
 #buttons {
   margin-left: auto;
   margin-right: 1em;
@@ -16,8 +11,14 @@
 #topButton {
   margin-bottom: 1em;
 }
-#tenantList li {
+
+.list li {
   list-style-type: none;
+}
+
+.card {
+  display: inline-block;
+  margin-right: auto;
 }
 
 .center {

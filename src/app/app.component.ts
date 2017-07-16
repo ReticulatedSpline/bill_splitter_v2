@@ -22,12 +22,17 @@ export class AppComponent implements OnInit {
   private tenants : Tenant[];
   private formArray : FormArray;
   private count : number;
-  private output : string;
+  private output : string[];
+  private submitted : boolean;
+  private total : number;
+  private ave : number;
 
   ngOnInit() {
     this.count = 1;
-    this.output = '';
-
+    this.output = [];
+    this.total = 0;
+    this.ave = 0;
+    this.submitted = false;
     this.tenants = [new Tenant(), new Tenant()];
   }
 
@@ -51,11 +56,7 @@ export class AppComponent implements OnInit {
   }
 
   submit() : void {
-
-    let total: number = 0;
-    //hold payment amounts
-    let temp: number = 0;
-
+    let temp = 0;
     //numbers only please.
     for (let tenant of this.tenants) {
       tenant.paid = Number(tenant.paid);
@@ -63,38 +64,39 @@ export class AppComponent implements OnInit {
 
     //find total
     for (let tenant of this.tenants) {
-      total += tenant.paid;
+      this.total += tenant.paid;
     }
 
     //+1 cus zero indexed
-    let ave: number = total/(this.count + 1);
-    console.log("Count: " + this.count);
-    console.log("Total: " + total);
-    console.log("Average: " + ave);
-    this.output += "The total utilities cost was $" + total +
-    " and the cost per tenant was $" + ave;
+    this.ave = this.total/(this.count + 1);
     //calculate payment deviations from average
-    for (let tenant of this.tenants) {
-      tenant.dev = tenant.paid - ave;
-    }
+    this.findDevs();
     //while deviations still remain
+    let index = 0;
     while (this.getMaxDev().dev !== 0 &&
-           this.getMinDev().dev !== 0) {
-      console.log("While Looped!");
+           this.getMinDev().dev !== 0) {;
       //max dev overpaid most
       //if this tenant overpaid more than the compared tenant underpaid
       if (this.getMaxDev().dev > Math.abs(this.getMinDev().dev)) {
         //underpaying tenant pays up to average cost
-        temp = this.getMinDev().dev
+        temp =this.getMinDev().dev;
       }
       //else they pay as much as overpaid tenant overpaid
-      else temp = Math.abs(this.getMaxDev().dev)
-      console.log(temp);
-      this.output += this.getMinDev().name + " should pay "
-                  + this.getMaxDev().name + " $" + temp + "\n";
+      else temp = this.getMaxDev().dev;
+      this.output.push(this.getMinDev().name + " should pay "
+                  + this.getMaxDev().name + " $" + Math.abs(temp));
 
-      this.getMaxDev().paid = this.getMaxDev().paid - temp;
-      this.getMinDev().paid = this.getMinDev().paid - temp;
+      this.getMaxDev().paid = this.getMaxDev().paid - Math.abs(temp);
+      this.getMinDev().paid = this.getMinDev().paid + Math.abs(temp);
+      this.findDevs();
+    }
+    console.log(this.output);
+    this.submitted = true;
+  }
+
+  findDevs() : void {
+    for (let tenant of this.tenants) {
+      tenant.dev = tenant.paid - this.ave;
     }
   }
 
@@ -120,5 +122,28 @@ export class AppComponent implements OnInit {
       }
     }
     return minTenant;
+  }
+
+  toggleState() : void {
+    this.submitted = !this.submitted;
+  }
+
+  getMonth() : string {
+    var d = new Date();
+    var month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+    var n = month[d.getMonth()];
+    return n;
   }
 }
