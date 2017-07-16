@@ -1,0 +1,27 @@
+#assembly {
+  display: flex;
+  margin-top: 5%;
+}
+
+#tenantCard {
+  display: inline-block;
+  margin-right: auto;
+}
+
+#buttons {
+  margin-left: auto;
+}
+
+#tenantList li {
+  list-style-type: none;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.cardItem {
+  display: inline-block;
+}

@@ -1,0 +1,46 @@
+
+<span id="assembly">
+<div id="buttons">
+<button
+  md-mini-fab
+  (click)="addTenant()"
+  color="accent"
+  [disabled]="count > 10">+</button>
+<br>
+<button
+  md-mini-fab
+  (click)="removeTenant()"
+  color="primary"
+  [disabled]="count < 2">-</button>
+</div>
+
+<md-card id="tenantCard">
+  <ul id="tenantList">
+    <li *ngFor="let tenant of tenants">
+      <md-input-container
+        class = "cardItem">
+        <input
+          mdInput
+          [(ngModel)]="tenant.name"
+          (keyup) = "onKeyUp()"
+          placeholder="Tenant Name">
+      </md-input-container>
+      <h3
+        class = "cardItem">$</h3>
+      <md-input-container
+        class = "cardItem">
+        <input
+          mdInput
+          [(ngModel)]="tenant.paid"
+          (keyup) = "onKeyUp()"
+          placeholder="Amount Paid">
+      </md-input-container>
+    </li>
+    <button
+      md-raised-button
+      class = "center"
+      color = "primary"
+      [disabled] = "tenants.status === 'INVALID'">Who pays who?</button>
+  </ul>
+</md-card>
+</span>
