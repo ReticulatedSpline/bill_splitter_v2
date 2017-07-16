@@ -3,6 +3,7 @@
 <div id="buttons">
 <button
   md-mini-fab
+  id="topButton"
   (click)="addTenant()"
   color="accent"
   [disabled]="count > 10">+</button>
@@ -22,7 +23,6 @@
         <input
           mdInput
           [(ngModel)]="tenant.name"
-          (keyup) = "onKeyUp()"
           placeholder="Tenant Name">
       </md-input-container>
       <h3
@@ -32,7 +32,6 @@
         <input
           mdInput
           [(ngModel)]="tenant.paid"
-          (keyup) = "onKeyUp()"
           placeholder="Amount Paid">
       </md-input-container>
     </li>
@@ -40,7 +39,9 @@
       md-raised-button
       class = "center"
       color = "primary"
-      [disabled] = "tenants.status === 'INVALID'">Who pays who?</button>
+      [disabled] = "!valid()"
+      (click) = "submit()">Who pays who?</button>
   </ul>
 </md-card>
 </span>
+<h3>Output: {{output}}</h3>
