@@ -4,15 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node Server.js",
+    "start": "node server.js",
     "build": "ng build",
     "preinstall": "npm install -g angular-cli",
-    "postinstall": "npm start",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
