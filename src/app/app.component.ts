@@ -19,14 +19,14 @@ import {Tenant} from './tenant';
 })
 export class AppComponent implements OnInit {
 
-  private tenants : Tenant[];
-  private formArray : FormArray;
-  private count : number;
-  private output : string[];
-  private submitted : boolean;
-  private total : number;
-  private ave : number;
-  private mailLink : string;
+  public tenants : Tenant[];
+  public formArray : FormArray;
+  public count : number;
+  public output : string[];
+  public submitted : boolean;
+  public total : number;
+  public ave : number;
+  public mailLink : string;
 
   constructor(public snackBar: MdSnackBar) {
     this.count = 1;
