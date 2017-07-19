@@ -11,6 +11,8 @@ This app uses HTML5 for DOM elements and styles them with CSS (Duh). The busines
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.
 
+Clipboard functionality provided with [ngx-clipboard](https://github.com/maxisam/ngx-clipboard)
+
 Node version 6.11.0.
 NPM version 3.10.10.
 
