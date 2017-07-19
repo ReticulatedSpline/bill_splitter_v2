@@ -99,13 +99,12 @@ export class AppComponent implements OnInit {
     this.ave.toFixed(2);
     this.total.toFixed(2);
     this.mailLink = String("mailto:?subject=Bills%20for%20the%20month%20of%20" +
-      this.getMonth() + "&amp;body=");
+      this.getMonth() + "&body=");
     for (let line of this.output) {
       this.mailLink += String(line + '%0D%0A');
     }
     this.mailLink = this.mailLink.replace(/ /g, '%20');
     this.mailLink = this.mailLink.replace(/\$/g, '%24');
-      this.mailLink = this.mailLink.replace(/\./g, '&#46');
     console.log(this.mailLink);
     this.submitted = true;
   }
