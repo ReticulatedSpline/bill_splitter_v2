@@ -8,6 +8,7 @@ import { FormsModule,
 import {MdButtonModule,
         MdCheckboxModule,
         MdInputModule,
+        MdSnackBar,
         MdCardModule } from '@angular/material';
 import {Tenant} from './tenant';
 
@@ -18,21 +19,25 @@ import {Tenant} from './tenant';
 })
 export class AppComponent implements OnInit {
 
-  //list of all tenants
-  public tenants : Tenant[];
-  public formArray : FormArray;
-  public count : number;
-  public output : string[];
-  public submitted : boolean;
-  public total : number;
-  public ave : number;
+  private tenants : Tenant[];
+  private formArray : FormArray;
+  private count : number;
+  private output : string[];
+  private submitted : boolean;
+  private total : number;
+  private ave : number;
+  private mailLink : string;
 
-  ngOnInit() {
+  constructor(public snackBar: MdSnackBar) {
     this.count = 1;
     this.output = [];
     this.total = 0;
     this.ave = 0;
     this.submitted = false;
+    this.mailLink = "";
+  }
+
+  ngOnInit() {
     this.tenants = [new Tenant(), new Tenant()];
   }
 
@@ -84,7 +89,7 @@ export class AppComponent implements OnInit {
       //else they pay as much as overpaid tenant overpaid
       else temp = this.getMaxDev().dev;
       this.output.push(this.getMinDev().name + " should pay "
-                  + this.getMaxDev().name + " $" + Math.abs(temp).toFixed(2));
+                  + this.getMaxDev().name + " $" + Math.abs(temp).toFixed(2) + ' ');
 
       this.getMaxDev().paid = this.getMaxDev().paid - Math.abs(temp);
       this.getMinDev().paid = this.getMinDev().paid + Math.abs(temp);
@@ -93,6 +98,15 @@ export class AppComponent implements OnInit {
 
     this.ave.toFixed(2);
     this.total.toFixed(2);
+    this.mailLink = String("mailto:?subject=Bills%20for%20the%20month%20of%20" +
+      this.getMonth() + "&amp;body=");
+    for (let line of this.output) {
+      this.mailLink += String(line + '%0D%0A');
+    }
+    this.mailLink = this.mailLink.replace(/ /g, '%20');
+    this.mailLink = this.mailLink.replace(/\$/g, '%24');
+      this.mailLink = this.mailLink.replace(/\./g, '&#46');
+    console.log(this.mailLink);
     this.submitted = true;
   }
 
@@ -144,5 +158,11 @@ export class AppComponent implements OnInit {
     //TODO: Deal with negative outcomes
     var n = month[d.getMonth() - 2];
     return n;
+  }
+
+  openSnackbar() {
+    this.snackBar.open("Copied to clipboard!", "Close", {
+      duration: 2000,
+    });
   }
 }

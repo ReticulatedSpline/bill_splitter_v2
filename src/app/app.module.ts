@@ -8,7 +8,9 @@ import { FormsModule,
 import { MdButtonModule,
          MdCheckboxModule,
          MdInputModule,
+         MdSnackBarModule,
          MdCardModule, } from '@angular/material';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,9 @@ import { MdButtonModule,
     MdButtonModule,
     MdInputModule,
     MdCardModule,
+    MdSnackBarModule,
+    //Clipboard
+    ClipboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

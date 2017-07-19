@@ -77,10 +77,18 @@ class = "card"
     <button
     md-button
     (click) = "ngOnInit()">Restart</button>
+    <input
+    type="text"
+    hidden
+    [(ngModel)]="output">
     <button
-    md-button>Copy to Clipboard</button>
-    <button
-    md-button>Email</button>
+    md-button
+    ngxClipboard
+    [cbContent]="output"
+    (click) = "openSnackbar()">Copy to Clipboard</button>
+    <a [href] = "mailLink"
+        id = "mailTo">
+      <button md-button>Email</button></a>
   </md-card-actions>
 </md-card>
 </span>
