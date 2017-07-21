@@ -9,7 +9,8 @@ import { MdButtonModule,
          MdCheckboxModule,
          MdInputModule,
          MdSnackBarModule,
-         MdCardModule, } from '@angular/material';
+         MdCardModule,
+         MdTooltipModule} from '@angular/material';
 import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     MdInputModule,
     MdCardModule,
     MdSnackBarModule,
+    MdTooltipModule,
     //Clipboard
     ClipboardModule,
   ],

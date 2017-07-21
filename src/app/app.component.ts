@@ -53,7 +53,8 @@ export class AppComponent implements OnInit {
 
   valid() : boolean {
     for (let tenant of this.tenants) {
-      if (!tenant.name || !tenant.paid) {
+      if (!tenant.name ||
+          isNaN(tenant.paid)) {
         return false;
       }
     }
@@ -72,7 +73,7 @@ export class AppComponent implements OnInit {
       this.total += tenant.paid;
     }
 
-    //+1 cus zero indexed
+    //Increment to account for zero index
     this.ave = this.total/(this.count + 1);
     //calculate payment deviations from average
     this.findDevs();
@@ -98,15 +99,7 @@ export class AppComponent implements OnInit {
 
     this.ave.toFixed(2);
     this.total.toFixed(2);
-    this.mailLink = String("mailto:?subject=Bills%20for%20the%20month%20of%20" +
-      this.getMonth() + "&body=");
-    for (let line of this.output) {
-      this.mailLink += String(line + '%0D%0A');
-    }
-    this.mailLink = this.mailLink.replace(/ /g, '%20');
-    this.mailLink = this.mailLink.replace(/\$/g, '%24');
-    console.log(this.mailLink);
-    this.submitted = true;
+    this.setMailTo();
   }
 
   findDevs() : void {
@@ -159,7 +152,21 @@ export class AppComponent implements OnInit {
     return n;
   }
 
-  openSnackbar() {
+  setMailTo() : void {
+    this.mailLink = String("mailto:?subject=Bills%20for%20the%20month%20of%20" +
+      this.getMonth() + "&body=");
+    this.mailLink += String("Total monthly cost: " + this.total + '%0D%0A');
+    this.mailLink += String("Average monthly cost: " + this.ave + '%0D%0A');
+    for (let line of this.output) {
+      this.mailLink += String(line + '%0D%0A');
+    }
+    this.mailLink = this.mailLink.replace(/ /g, '%20');
+    this.mailLink = this.mailLink.replace(/\$/g, '%24');
+    console.log(this.mailLink);
+    this.submitted = true;
+  }
+
+  openSnackbar() : void {
     this.snackBar.open("Copied to clipboard!", "Close", {
       duration: 2000,
     });

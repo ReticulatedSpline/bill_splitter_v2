@@ -59,7 +59,11 @@ class = "card"
 *ngIf = "submitted">
   <md-card-header
    id = "cardHeader">
-    <md-card-title>For the month of {{getMonth()}}:</md-card-title>
+    <md-card-title>For the month of
+      <span
+      mdTooltip="Backdated two months"
+      mdTooltipPosition="above">{{getMonth()}}</span>:
+    </md-card-title>
     <md-card-subtitle>Total Utilities: ${{total}} | Cost per Tenant: ${{ave}}</md-card-subtitle>
   </md-card-header>
   <md-card-content
@@ -76,7 +80,7 @@ class = "card"
    id = "actions">
     <button
     md-button
-    (click) = "ngOnInit()">Restart</button>
+    (click) = "ngOnInit()">Start Over</button>
     <input
     type="text"
     hidden
