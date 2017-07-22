@@ -27,17 +27,19 @@ export class AppComponent implements OnInit {
   public total : number;
   public ave : number;
   public mailLink : string;
+  public inkRipple : boolean;
 
   constructor(public snackBar: MdSnackBar) {
     this.count = 1;
     this.output = [];
     this.total = 0;
     this.ave = 0;
-    this.submitted = false;
     this.mailLink = "";
+    this.inkRipple = false;
   }
 
   ngOnInit() {
+    this.submitted = false;
     this.tenants = [new Tenant(), new Tenant()];
   }
 
@@ -155,8 +157,8 @@ export class AppComponent implements OnInit {
   setMailTo() : void {
     this.mailLink = String("mailto:?subject=Bills%20for%20the%20month%20of%20" +
       this.getMonth() + "&body=");
-    this.mailLink += String("Total monthly cost: " + this.total + '%0D%0A');
-    this.mailLink += String("Average monthly cost: " + this.ave + '%0D%0A');
+    this.mailLink += String("Total expenses: $" + this.total + '%0D%0A');
+    this.mailLink += String("Per person cost: $" + this.ave + '%0D%0A%0D%0A');
     for (let line of this.output) {
       this.mailLink += String(line + '%0D%0A');
     }
@@ -171,4 +173,7 @@ export class AppComponent implements OnInit {
       duration: 2000,
     });
   }
+
+  public githubLogoPath = "https://assets-cdn.github.com/favicon.ico";
+  public githubLink = "https://github.umn.edu/carpe504/Utilities-Balancer-3.0"
 }

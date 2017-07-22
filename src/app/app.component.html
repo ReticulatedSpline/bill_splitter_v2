@@ -8,13 +8,17 @@ id="buttons"
   id="topButton"
   (click)="addTenant()"
   color="accent"
-  [disabled]="count > 10">+</button>
+  [disabled]="count > 10"
+  mdTooltip="Add a tenant"
+  mdTooltipPosition="left">+</button>
 <br>
 <button
   md-mini-fab
   (click)="removeTenant()"
   color="primary"
-  [disabled]="count < 2">-</button>
+  [disabled]="count < 2"
+  mdTooltip="Remove a tenant"
+  mdTooltipPosition="left">-</button>
 </div>
 
 <div
@@ -38,7 +42,9 @@ class="card"
       <h3
         class = "cardItem">$</h3>
       <md-input-container
-        class = "cardItem">
+        class = "cardItem"
+        mdTooltip="Blanks are equivilent to $0.00"
+        mdTooltipPosition="right">
         <input
           mdInput
           [(ngModel)]="tenant.paid"
@@ -50,7 +56,9 @@ class="card"
       class = "center"
       color = "primary"
       [disabled] = "!valid()"
-      (click) = "submit()">Who pays who?</button>
+      (click) = "submit()"
+      mdTooltip="Fill out all fields to unlock."
+      mdTooltipPosition="below">Who pays who?</button>
   </ul>
 </md-card>
 
@@ -95,4 +103,15 @@ class = "card"
       <button md-button>Email</button></a>
   </md-card-actions>
 </md-card>
+
+<a
+  id="github"
+  [href] = "githubLink">
+  <button
+    md-icon-button
+    mdTooltip="View Source"
+    mdTooltipPosition="right"><img
+    [src]="githubLogoPath"></button>
+</a>
+
 </span>

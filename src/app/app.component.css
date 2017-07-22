@@ -13,9 +13,10 @@ h3 {
 }
 
 #github {
-  padding: 0;
   margin-right: auto;
   margin-left: 1em;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
 
 #topButton {
@@ -51,7 +52,6 @@ h3 {
 
 .card {
   display: inline-block;
-  margin-right: auto;
 }
 
 .center {
