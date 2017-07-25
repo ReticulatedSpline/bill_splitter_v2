@@ -175,5 +175,5 @@ export class AppComponent implements OnInit {
   }
 
   public githubLogoPath = "https://assets-cdn.github.com/favicon.ico";
-  public githubLink = "https://github.umn.edu/carpe504/Utilities-Balancer-3.0"
+  public githubLink = "https://github.com/ReticulatedSpline/Utilities-Balancer-3"
 }
