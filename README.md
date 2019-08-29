@@ -5,7 +5,8 @@ It is currently deployed to Heroku [here.](https://utilities-balancer.herokuapp.
 
 This app uses HTML5 for DOM elements and pure CSS for styling. The business logic is implemented with [Angular](https://angular.io/), a Javascript framework. A single purpose [Node.js](https://nodejs.org/en/) server is used to serve the build version.
 
-[Screenshots](https://imgur.com/a/JoqkW)
+![Data entry screen](https://i.imgur.com/w8Uyj2d.png)
+![Results screen](https://i.imgur.com/Aqz36Zl.png)
 
 # Utilites
 
