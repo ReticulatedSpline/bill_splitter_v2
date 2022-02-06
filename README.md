@@ -1,8 +1,6 @@
 # About
 This is a small webapp to determine who should pay who when splitting a total cost between roommates.
 
-It is currently deployed to Heroku [here.](https://utilities-balancer.herokuapp.com/)
-
 This app uses HTML5 for DOM elements and pure CSS for styling. The business logic is implemented with [Angular](https://angular.io/), a Javascript framework. A single purpose [Node.js](https://nodejs.org/en/) server is used to serve the build version.
 
 ![Data entry screen](https://i.imgur.com/w8Uyj2d.png)
